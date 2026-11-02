@@ -1,5 +1,5 @@
-import note from '/assets/note.png'
-import pin from '/assets/pin.png'
+const note = `${import.meta.env.BASE_URL}assets/note.png`
+const pin = `${import.meta.env.BASE_URL}assets/pin.png`
 import { FaLinkedin } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { BsFileEarmarkPerson } from "react-icons/bs";

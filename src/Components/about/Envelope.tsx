@@ -37,7 +37,8 @@ type GLTFResult = GLTF & {
 }
 
 export function Envelope(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/Portfolio/envelope.glb') as unknown as GLTFResult
+  const envelopeModelUrl = `${import.meta.env.BASE_URL}envelope.glb`;
+  const { nodes, materials } = useGLTF(envelopeModelUrl) as unknown as GLTFResult
 
   const flapRef = useRef<THREE.Group>(null);
   const groupRef = useRef<THREE.Group>(null);
@@ -65,7 +66,7 @@ export function Envelope(props: JSX.IntrinsicElements['group']) {
   }, []);
 
   useEffect(() => {
-    const texture = new THREE.TextureLoader().load('/Portfolio/assets/aboutCard.png');
+    const texture = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}assets/aboutCard.png`);
     texture.flipY = false;
     texture.anisotropy = 0;
     texture.magFilter = THREE.NearestFilter;
@@ -73,7 +74,7 @@ export function Envelope(props: JSX.IntrinsicElements['group']) {
     texture.colorSpace = THREE.SRGBColorSpace;
     materials.card.map = texture;
     
-    const texture2 = new THREE.TextureLoader().load('/Portfolio/assets/innerTexture.jpg');
+    const texture2 = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}assets/innerTexture.jpg`);
     texture2.flipY = false;
     texture2.anisotropy = 0;
     texture2.magFilter = THREE.NearestFilter;
@@ -81,7 +82,7 @@ export function Envelope(props: JSX.IntrinsicElements['group']) {
     texture2.colorSpace = THREE.SRGBColorSpace;
     materials.inner.map = texture2;
 
-    const texture3 = new THREE.TextureLoader().load('/Portfolio/assets/outerTexture.png');
+    const texture3 = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}assets/outerTexture.png`);
     texture3.flipY = false;
     texture3.anisotropy = 0;
     texture3.magFilter = THREE.NearestFilter;
@@ -89,7 +90,7 @@ export function Envelope(props: JSX.IntrinsicElements['group']) {
     texture3.colorSpace = THREE.SRGBColorSpace;
     materials.outer.map = texture3;
 
-    const texture4 = new THREE.TextureLoader().load('/Portfolio/assets/myImage.jpg');
+    const texture4 = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}assets/myImage.jpg`);
     texture4.flipY = false;
     texture4.anisotropy = 0;
     texture4.magFilter = THREE.NearestFilter;
@@ -216,4 +217,4 @@ export function Envelope(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/Portfolio/envelope.glb')
+useGLTF.preload(`${import.meta.env.BASE_URL}envelope.glb`)

@@ -1,4 +1,4 @@
-//import file from '/assets/file.png'
+// const file = `${import.meta.env.BASE_URL}assets/file.png`
 //import { Envelope } from '../../about/Envelope'
 import Images from '../images/Images'
 import { Canvas } from '@react-three/fiber'
@@ -27,7 +27,7 @@ const Folder = ({ handleImageFound }: Props) => {
         <Canvas className="w-full h-full" dpr={[1,2]}>            
             <directionalLight position={[5, 1, 5]} intensity={3} color={0xFFF0C5}/>
             <ambientLight intensity={1.5} color={0xFFFFFF}/>
-            <Environment files={"/Portfolio/suburban_garden_1k.hdr"} environmentIntensity={0.8}/>
+            <Environment files={`${import.meta.env.BASE_URL}suburban_garden_1k.hdr`} environmentIntensity={0.8}/>
             <FolderModel receiveShadow castShadow onTextureLoaded={() => setTextureLoaded(true)} onFirstTimeOpened={() => {setLoadImages(true)}} /> 
         </Canvas>
 

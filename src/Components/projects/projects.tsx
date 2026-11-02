@@ -1,11 +1,11 @@
-import folder from "/assets/blueFolder.png"
-import website from "/assets/website.png"
-import mazeRunner from "/assets/mazeRunner.png"
-import assertiveEmailer from "/assets/assertiveEmailer.png"
-import paper from "/assets/paper.png"
+const folder = `${import.meta.env.BASE_URL}assets/blueFolder.png`
+const website = `${import.meta.env.BASE_URL}assets/website.png`
+const mazeRunner = `${import.meta.env.BASE_URL}assets/mazeRunner.png`
+const assertiveEmailer = `${import.meta.env.BASE_URL}assets/assertiveEmailer.png`
+const paper = `${import.meta.env.BASE_URL}assets/paper.png`
 import { useState } from "react"
-import lily from "/assets/lily.png"
-import orchid from "/assets/orchid.png"
+const lily = `${import.meta.env.BASE_URL}assets/lily.png`
+const orchid = `${import.meta.env.BASE_URL}assets/orchid.png`
 
 interface foundImages {
     smiskiFound: boolean;
