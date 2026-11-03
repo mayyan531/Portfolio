@@ -11,7 +11,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 
 interface foundImages {
     smiskiFound: boolean;
-    flowerFound: boolean;
+    berryFound: boolean;
     watermelonFound: boolean;
 }
 
@@ -39,7 +39,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [foundImages, setFoundImages] = useState<foundImages>({
     smiskiFound: false,
-    flowerFound: false,
+    berryFound: false,
     watermelonFound: false,
   });
 
@@ -53,28 +53,38 @@ function App() {
   if (!loaded) {
     return <Loader onLoaded={() => setLoaded(true)} />
   }
-
-  return (
-    <div className="inset-0 relative w-full select-none drag-none bg-linear-to-b from-cream to-blue from-30%">
-      <div className="absolute bottom-0 top-0">
-        <Scroll />
-      </div>
   
-      <Folder handleImageFound={handleImageFound} />
+  return (
+    <div className="relative w-full select-none drag-none bg-linear-to-b from-cream to-blue from-30%">
+
+      <Scroll />
+
+      <div id="home">
+        <Folder handleImageFound={handleImageFound} />
+      </div>
 
       <div className="relative w-full">
-        <div className="hidden md:block absolute inset-0 pointer-events-none">
+
+        <div className="sticky top-0 z-[1000] h-0 w-full pointer-events-none">
           <Header />
         </div>
 
-        <AboutV2 />
+        <div id="about">
+          <AboutV2 />
+        </div>
 
-        <Projects handleImageFound={handleImageFound} />
+        <div id="projects">
+          <Projects />
+        </div>
 
-        <Contact foundImages={foundImages}/>
+        <div id="contact">
+          <Contact foundImages={foundImages} />
+        </div>
+
       </div>
     </div>
   )
 }
+
 
 export default App

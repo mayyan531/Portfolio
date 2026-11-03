@@ -4,11 +4,11 @@ import Images from '../images/Images'
 import { Canvas } from '@react-three/fiber'
 import FolderModel from './FolderModel'
 import { Environment } from '@react-three/drei'
-import { useState } from 'react'
+import { Suspense, useCallback, useState } from 'react'
 
 interface foundImages {
     smiskiFound: boolean;
-    flowerFound: boolean;
+    berryFound: boolean;
     watermelonFound: boolean;
 }
 
@@ -19,16 +19,37 @@ type Props = {
 const Folder = ({ handleImageFound }: Props) => {      
     const [textureLoaded, setTextureLoaded] = useState(false);
     const [loadImages, setLoadImages] = useState(false);
+
+    const handleTextureLoaded = useCallback(() => {
+        setTextureLoaded(true);
+    }, []);
     
   return (
     <div className={`flexh h-screen w-full relative transition-opacity duration-1000 ease-in-out ${textureLoaded ? "opacity-100" : "opacity-0"}`}>
         {loadImages && <Images handleImageFound={handleImageFound} />}
 
-        <Canvas className="w-full h-full" dpr={[1,2]}>            
-            <directionalLight position={[5, 1, 5]} intensity={3} color={0xFFF0C5}/>
-            <ambientLight intensity={1.5} color={0xFFFFFF}/>
-            <Environment files={`${import.meta.env.BASE_URL}suburban_garden_1k.hdr`} environmentIntensity={0.8}/>
-            <FolderModel receiveShadow castShadow onTextureLoaded={() => setTextureLoaded(true)} onFirstTimeOpened={() => {setLoadImages(true)}} /> 
+        <Canvas className="w-full h-full" dpr={[1, 2]}>
+        <directionalLight
+            position={[5, 1, 5]}
+            intensity={3}
+            color={0xFFF0C5}
+        />
+
+        <ambientLight intensity={1.5} color={0xFFFFFF}/>
+
+        <Suspense fallback={null}>
+            <Environment
+            files={`${import.meta.env.BASE_URL}suburban_garden_1k.hdr`}
+            environmentIntensity={0.8}
+            />
+
+            <FolderModel
+            receiveShadow
+            castShadow
+            onTextureLoaded={handleTextureLoaded}
+            onFirstTimeOpened={() => setLoadImages(true)}
+            />
+        </Suspense>
         </Canvas>
 
 {/*         <div className='h-2/6 w-auto lg:w-3/9 lg:h-auto relative '>

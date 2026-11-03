@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber"
 import { Envelope } from "./Envelope"
 import { Environment } from "@react-three/drei"
+import { Suspense } from "react"
 
 const AboutV2 = () => {
   return (
@@ -10,7 +11,9 @@ const AboutV2 = () => {
             <ambientLight intensity={1} color={0xFFFFFF}/>
             <Environment files={`${import.meta.env.BASE_URL}suburban_garden_1k.hdr`} environmentIntensity={0.8}/>
 
-            <Envelope receiveShadow castShadow/>
+            <Suspense fallback={null}>
+                <Envelope receiveShadow castShadow/>
+            </Suspense>
         </Canvas>
     </div>
   )

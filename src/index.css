@@ -69,4 +69,56 @@
   }
 }
 
+.found-pop {
+  animation: found-pop 0.45s ease-out;
+}
+
+@keyframes found-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Lines bursting outward */
+.found-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 14px;
+  border-radius: 4px;
+  background: #8FB8D8;
+  opacity: 0;
+  animation: found-burst 0.55s ease-out forwards;
+}
+
+@keyframes found-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-30px) scaleY(0.3);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-75px) scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .found-pop,
+  .found-ray {
+    animation: none;
+  }
+}
 
