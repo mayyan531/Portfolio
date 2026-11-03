@@ -2,7 +2,7 @@
 import { useRef, useState, type FormEvent } from 'react'
 import emailjs from '@emailjs/browser'
 import { AiOutlineLoading } from 'react-icons/ai'
-import { FiArrowUpRight, FiMail, FiCheck, FiAlertCircle, FiCheckCircle } from 'react-icons/fi'
+import { FiArrowUpRight, FiMail, FiAlertCircle, FiCheckCircle } from 'react-icons/fi'
 import Challenge from './Challenge'
 
 interface FoundImages {
